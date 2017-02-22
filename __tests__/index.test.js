@@ -1,8 +1,8 @@
 const { Mapper } = require('../')
-const npmBuild = require('@beardedtim/config-mapper')
-const npmMapper = npmBuild.Mapper
 
-const runTest = Mapper => {
+
+
+describe('Mapper', () => {
   it('should exist', () => {
     expect(typeof Mapper).toBe('function')
   })
@@ -86,14 +86,30 @@ const runTest = Mapper => {
       }
     })
   })
-}
+  it('passes the readme example', () => {
+    const config = {
+      realName: {
+        resourceName: 'name'
+      },
+      username: {
+        resourceName: 'handle'
+      }
+    }
 
-describe('Mapper', () => {
-  runTest(Mapper)
-})
-
-describe('imported Mapper', () => {
-  it('passes all of the same tests that the original mapper does!',() => {
-    runTest(npmMapper)
+    const input = {
+      handle: 'beardedtim',
+      name: 'Tim',
+      age: 28
+    }
+    const configured = Mapper(config, input)
+    expect(configured).toEqual({
+      realName: {
+        value: 'Tim'
+      },
+      username: {
+        value: 'beardedtim'
+      },
+      age: 28
+    })
   })
 })
