@@ -1,0 +1,29 @@
+{
+  "name": "@beardedtim/config-mapper",
+  "version": "0.1.1",
+  "description": "A basic object to object mapper",
+  "main": "./distribution/index.js",
+  "author": "Timi <timiroberts@gmail.com> (https://github.com/beardedtim)",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-cli": "6",
+    "babel-core": "^6.23.1",
+    "babel-jest": "^19.0.0",
+    "babel-plugin-transform-flow-strip-types": "^6.22.0",
+    "babel-plugin-transform-object-rest-spread": "^6.23.0",
+    "babel-polyfill": "^6.23.0",
+    "flow-bin": "^0.39.0",
+    "jest": "^19.0.0"
+  },
+  "scripts": {
+    "test": "jest",
+    "test:w": "jest --watch",
+    "coverage": "jest --coverage",
+    "build": "babel index.js --out-dir distribution",
+    "prepublish": "npm run build"
+  },
+  "dependencies": {
+    "@beardedtim/config-mapper": "0.1.0",
+    "ramda": "^0.23.0"
+  }
+}
