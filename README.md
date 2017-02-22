@@ -12,8 +12,6 @@ yarn add @beardedtim/config-mapper
 
 ## Mapper
 
-This is the only method so far and has the following signature:
-
 ```
 Mapper : Object -> Object -> Object
 const Mapper = (config, input) => Object
@@ -62,5 +60,52 @@ configured === ({
       value: 'beardedtim'
     },
     age: 28
+})
+```
+
+## Maker
+
+```
+Maker : Object -> Object -> Object
+const Maker = (config, input) => Object
+```
+
+The `config` object should look like this:
+
+```
+{
+  [KEY_WE_WANT_TO_AFFECT]: [FUNCTION_TO_MODIFY_VALUE_AS_NEEDED]
+}
+```
+
+The function called will be passed the following values:
+
+- `input[key]` : The value of the input object at the given key.
+- `key` : The key we are currently dealing with.
+- `input` : The input object we were given this value from.
+
+The `input` object should look like this:
+
+```
+{
+  [KEY_WE_WANT_TO_AFFECT]: [VALUE_WE_WANT_TO_MODIFY]
+}
+```
+
+The following is an example of using the Maker function. Suppose that we have data coming into a function that we want to make sure is valid ( we could `try/catch` our Maker calls and ensure validation or we can truncate text if it is too long coming in as a prop ) for the component/routine/class/et al we are using the input from.
+
+```
+const config = {
+  donorIDs: list => list.slice(0,5)
+}
+
+const input = {
+  donorIDs: [1,2,3,4,5,6,7,8,9,10]
+}
+
+const configured = Maker(config,input)
+
+const configured === ({
+    donorIDs: [1,2,3,4,5]
 })
 ```

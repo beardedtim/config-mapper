@@ -1,4 +1,4 @@
-const { Mapper } = require('../')
+const Mapper = require('../modules/Mapper')
 
 
 

@@ -1,6 +1,6 @@
 {
   "name": "@beardedtim/config-mapper",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A basic object to object mapper",
   "main": "./distribution/index.js",
   "author": "Timi <timiroberts@gmail.com> (https://github.com/beardedtim)",
